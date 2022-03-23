@@ -1,5 +1,6 @@
 ## The game is still in early development stage.
 
+You can check out the demo here -> https://stress-game.vercel.app/
 
 ## Getting Started
 

@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* overflow: hidden; */
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#logo {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  opacity: 25%;
+  background-image: url("/icons/stress.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: multiply;
+  background-size: 500px auto;
+  z-index: 1;
+}
+
+#table {
+  background-image: url('/images/cartographer.png');
+  background-color: #0f766e;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  z-index: 0;
+}
+
+#center {
+  grid-area: 2 / 2 / 9 / 10;
+  max-width: max-content;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+#bottom {
+  grid-area: 9 / 1 / 11 / 11;
+  z-index: 2;
+}
+
+#top {
+  grid-area: 1 / 1 / 2 / 11;
+  z-index: 2;
+}
+
+#left {
+  grid-area: 2 / 1 / 9 / 2;
+  z-index: 2;
+}
+
+#right {
+  grid-area: 2 / 10 / 9 / 11;
+  z-index: 2;
+}
+
+
+
+.card {
+  background-color: transparent;
+  display: flex;
+  width: 8em;
+  height: 12em;
+}
+
+.card-inner {
+  aspect-ratio: 2/3;
+  font-weight: 600;
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  font-size: larger;
+}
+
+.card-front {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.card-back {
+  background-image: url('/images/texture.png');
+  background-blend-mode: difference;
+  background-color: #ffffff;
+  color: white;
+  transform: rotateY(-180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.closed .card-inner {
+  transform: rotateY(-180deg);
+}
+
+.card-front, .card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0.1em 0.4em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.card-front .card-topleft {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-self: start;
+  align-self: flex-start;
+  align-items: center;
+  gap: 5;
+}
+
+.card-front .card-bottomright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(180deg);
+}
+
+.card .card-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vertical-text {
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  letter-spacing: -0.3em;
+  padding-bottom: 8px;
+  font-weight: 700;
+  font-size: 0.7em;
+}
+
+.card.sinek, .card.maca {
+  color: black;
+}
+
+.card.kupa, .card.karo {
+  color: red;
+}
+
+.card.joker {
+  color: green;
+  text-orientation: vertical-rl;
+  text-transform: uppercase;
+}
+
+.deck {
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow:
+    1px -1px 0px rgb(255, 255, 255),
+    2px -2px 0px rgba(0, 0, 0, 0.7),
+    3px -3px 0px rgb(255, 255, 255),
+    4px -4px 0px rgba(0, 0, 0, 0.7),
+    5px -5px 0px rgb(255, 255, 255),
+    6px -6px 0px rgba(0, 0, 0, 0.7),
+    7px -7px 0px rgb(255, 255, 255),
+    8px -8px 0px rgba(0, 0, 0, 0.7);
+}
+
+.deck .card {
+  position: absolute;
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+}
+
+.player-cards {
+  display: flex;
+}
+
+.player-cards .card {
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+}
+
+.player-cards .card img, .collection .card img {
+  transform: scale(0.8)
+}
+
+#bottom .deck {
+  width: 6em;
+  height: 9em;
+  position: absolute;
+  top: 0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  flex-wrap: wrap;
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+}
+
+#player-quests .card {
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+}
+
+#player-quests .card img {
+  transform: scale(0.8)
+}
+
+.collection .card {
+  width: clamp(4em, 8vw, 6em);
+  height: clamp(6em, 12vw, 9em);
+  
+}
+
+.collection > div {
+  transform:none !important;
+}
+
+
+#center .collectionColumn {
+  width: clamp(4em, 8vw, 6em);
+  height: max-content;
+  padding-bottom:clamp(6em, 12vw, 9em);
+}
+
+/* scroll bar */
+
+
+html *::-webkit-scrollbar-track
+{
+	background-color: green;
+}
+
+html *::-webkit-scrollbar
+{
+	width: 0px;
+	background-color: #F5F5F5;
+}
+
+html *::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 0px solid #555555;
+}
